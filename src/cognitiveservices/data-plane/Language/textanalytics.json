@@ -1733,7 +1733,7 @@
               },
               {
                 "$ref": "#/definitions/DocumentDetectedLanguage"
-              }EL
+              }
             ]
           }
         }
