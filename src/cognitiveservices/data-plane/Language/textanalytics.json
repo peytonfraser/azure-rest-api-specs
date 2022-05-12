@@ -458,6 +458,10 @@
           "description": "Optional display name for the analysis job.",
           "type": "string"
         },
+        "defaultLanguage": {
+            "description": "Default language to use for records requesting automatic language detection.",
+            "type": "string"
+        },
         "analysisInput": {
           "$ref": "#/definitions/MultiLanguageAnalysisInput"
         },
@@ -561,6 +565,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/EntitiesDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -609,6 +616,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/SingleClassificationDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -691,6 +701,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/MultiClassificationDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -1058,6 +1071,9 @@
       "allOf": [
         {
           "$ref": "#/definitions/AnalyzeTextTaskResult"
+        },
+        {
+          "$ref": "#/definitions/DocumentDetectedLanguage"
         }
       ],
       "required": [
@@ -1075,6 +1091,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/SentimentDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/RecordDetectedLanguage"
               }
             ]
           }
@@ -1407,6 +1426,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/EntitiesDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -1536,6 +1558,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/LinkedEntitiesDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -1705,7 +1730,10 @@
             "allOf": [
               {
                 "$ref": "#/definitions/PiiEntitiesDocumentResult"
-              }
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
+              }EL
             ]
           }
         }
@@ -2002,6 +2030,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/ExtractedSummaryDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -2142,6 +2173,9 @@
             "allOf": [
               {
                 "$ref": "#/definitions/KeyPhrasesDocumentResult"
+              },
+              {
+                "$ref": "#/definitions/DocumentDetectedLanguage"
               }
             ]
           }
@@ -2543,6 +2577,15 @@
         "statistics": {
           "description": "if showStats=true was specified in the request this field will contain information about the document payload.",
           "$ref": "#/definitions/DocumentStatistics"
+        }
+      }
+    },
+    "DocumentDetectedLanguage": {
+      "type": "object",
+      "properties": {
+        "detectedLanguage": {
+          "type": "string",
+          "description": "If 'language' is set to 'auto' for the document in the request this field will contain a 2 letter ISO 639-1 representation of the language detected for this document."
         }
       }
     },
